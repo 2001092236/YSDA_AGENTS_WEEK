@@ -46,6 +46,8 @@ Examples:
 
 **LoRA (SFT)** --- just a bit of knowledge.
 
+### RAG vs Training --- decision matrix
+
 ![RAG VS Training](image-1.png)
 
 ### Context managing
