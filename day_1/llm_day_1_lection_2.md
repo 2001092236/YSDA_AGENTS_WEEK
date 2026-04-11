@@ -1,4 +1,7 @@
 # Tools, MCP
+Video: https://www.youtube.com/live/VctYHtCap3o
+Materials: https://disk.yandex.ru/d/UYvdXggOw8bNtA
+
 ## Tools
 Tool = function, given to LLM
 
