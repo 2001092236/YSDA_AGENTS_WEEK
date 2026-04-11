@@ -109,3 +109,26 @@ Two options:
     c. APP executes the instrument via server
     d. APP gives result back to LLM
     e. Loop
+
+## LangGraph
+```python
+graph = StateGraph(AgentState)
+graph.add_node("llm", llm_node)
+graph.add_node("tools", tools_node)
+
+graph.set_entry_point("llm")
+
+# Route to tools if the last AI message contains tool calls; otherwise end
+graph.add_conditional_edges("llm", tools_condition, {"tools": "tools", END: END})
+
+# After tools run, go back to the LLM so it can use tool results
+graph.add_edge("tools", "llm")
+```
+![alt text](images/image-7.png)
+
+Как происходит взаимодействие (цикл исполнения):
+1. есть внутреннее состояние (AgentState). К нему также добавляется указание текущей вершины ---> получаем состояние конечного автомата.
+2. Каждый раз исполнитель:
+    - видит, что находится в вершине `u` с состоянием `AgentState`
+    - **исполняет** код вершины на этом состоянии: вызывает `u(AgentState) --> result` и получает `result`. Внутренний процессор: `AgentState + result ---> AgentStateNew`.
+    - **переходит** в следующую вершину, выбирая исходящее ребро `(u, v, rule)` (и смотря на их внутреннее правило `rule`). Если `rule(AgentStateNew) == True` --- то переходит в вершину `v` с уже новым `AgentStateNew`. Если ни одного перехда не нашлось (мб, соответствует `END`) --- то переходит в указанную вершину (чаще `END`, но могут быть и другие варианты.).
