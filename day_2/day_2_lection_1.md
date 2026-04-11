@@ -38,7 +38,7 @@ Examples:
 5. Current user message
 
 ### Training LLMs as knowledge embedding in weights
-![alt text](image.png)
+![alt text](images/image.png)
 
 **Pretrain** --- for domain knowledge.
 
@@ -48,7 +48,7 @@ Examples:
 
 ### RAG vs Training --- decision matrix
 
-![RAG VS Training](image-1.png)
+![RAG VS Training](images/image-1.png)
 
 ### Context managing
 1. **Sliding Window** --- just last $N$ messages.
@@ -58,8 +58,8 @@ Examples:
     - for the query, extract most relevant items from the previous dialogue.
 
 ## Guardrails
-![alt text](image-2.png)
-![alt text](image-3.png)
+![alt text](images/image-2.png)
+![alt text](images/image-3.png)
 Defensive pipeline:
 ```
 Input -> [Guard] -> Agent -> [Guard] -> Tools -> [Guard] -> Output
