@@ -1,0 +1,10 @@
+huggingface_hub
+transformers
+accelerate
+sentencepiece
+openai
+langchain
+langgraph
+langchain-openai
+ipykernel
+jupyter
