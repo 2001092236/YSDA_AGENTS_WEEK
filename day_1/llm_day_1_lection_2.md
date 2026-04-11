@@ -60,6 +60,14 @@ Tools are embedded inside each agent, their API may change over time AND: differ
 
 So, any API change would require updating multiple agents --- BAD!
 
+### Why MCP is needed --- concrete problems it solves
+
+| Problem | Without MCP | With MCP |
+|---|---|---|
+| **Tool reusability** | Each team reimplemented the same tools independently | Tools live in MCP servers --- standalone infrastructure components (like microservices). Write once → reuse across many agents and products |
+| **API updates & maintenance** | All agent teams had to update their integrations manually | Responsibility shifts to MCP server maintainers. Agents automatically discover updated capabilities during initialization |
+| **Scaling and modifications** | Components were tightly coupled. Changing one component required rewriting many parts in each agent | Separation of responsibilities. Changes are localized to individual components |
+
 MCP is open standart for **birirectional connections**: AI models <---> external systems.
 
 ![alt text](images/image-2.png)

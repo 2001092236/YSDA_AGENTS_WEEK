@@ -33,6 +33,18 @@ Model just generates textx.
 
 **Context** --- information the agent needs in the *current modent* --- it may CONSTRUCT from different parts!!!
 
+## Evolution of Human-LLM Interaction
+
+| Interaction | Description | Pattern example |
+|---|---|---|
+| **Prompting** | LLM output has no impact on program flow | `process_llm_output(llm_response)` |
+| **Router** | LLM determines the basic control flow | `if llm_decision(): path_a() else: path_b()` |
+| **Tool Calling** | LLM selects the function and arguments | `run_function(llm_chosen_tool, llm_chosen_args)` |
+| **Multi-step Agent (Autonomous Agent)** | LLM output controls iterations and continuation of program execution | `while llm_should_continue(): execute_next_step()` |
+| **Multi-Agent System** | One agent process can trigger another agent process | `if llm_trigger(): execute_agent()` |
+
+This is a spectrum of how much control we give to the LLM --- from zero autonomy (prompting) to full autonomy (multi-agent).
+
 ## Guardrails
 --- defend from prompt injection and making the behavious more deterministic
 
